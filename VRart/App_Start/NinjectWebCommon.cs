@@ -12,6 +12,8 @@ namespace VRart.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
+    using Ninject.Web.WebApi;
+    using System.Web.Http;
 
     public static class NinjectWebCommon 
     {
@@ -48,6 +50,10 @@ namespace VRart.App_Start
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
 
                 RegisterServices(kernel);
+
+                //Configure Ninject to resolve DI in Web API Controllers
+                GlobalConfiguration.Configuration.DependencyResolver = new NinjectDependencyResolver(kernel);
+
                 return kernel;
             }
             catch
@@ -63,6 +69,7 @@ namespace VRart.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            //Add to Ninject for DI
             kernel.Bind<ArtContext>().To<ArtContext>().InRequestScope();
             kernel.Bind<IArtRepository>().To<ArtRepository>().InRequestScope();
         }        
