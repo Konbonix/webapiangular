@@ -27,6 +27,23 @@ namespace VRart.Controllers
         {
             return _repo.GetAlbums(); 
         }
+
+        public HttpResponseMessage Post([FromBody]Album newAlbum)
+        {
+            if (newAlbum.Created == default(DateTime))
+            {
+                newAlbum.Created = DateTime.UtcNow;
+            } 
+            if (_repo.AddAlbum(newAlbum) && _repo.Save())
+            {
+                //return 200 
+                return Request.CreateResponse(HttpStatusCode.Created, newAlbum);
+            }
+
+            //return 500 failure
+            return Request.CreateResponse(HttpStatusCode.BadRequest);
+
+        }
         /* Web API default EF 
          
         private ArtContext db = new ArtContext();
