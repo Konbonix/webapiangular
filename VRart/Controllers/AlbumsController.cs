@@ -9,7 +9,8 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
-using VRart.Data.Art;
+using VRart.Models;
+using VRart.Dal;
 
 namespace VRart.Controllers
 {

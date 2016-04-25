@@ -231,11 +231,11 @@
     <Compile Include="Controllers\AlbumsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
-    <Compile Include="Data\Art\Album.cs" />
-    <Compile Include="Data\Art\ArtContext.cs" />
-    <Compile Include="Data\Art\ArtRepository.cs" />
-    <Compile Include="Data\Art\IArtRepository.cs" />
-    <Compile Include="Data\Art\Upload.cs" />
+    <Compile Include="Models\Album.cs" />
+    <Compile Include="Dal\ArtContext.cs" />
+    <Compile Include="Dal\ArtRepository.cs" />
+    <Compile Include="Dal\IArtRepository.cs" />
+    <Compile Include="Models\Upload.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -243,7 +243,7 @@
     <Compile Include="Migrations\201604170354195_InitialCreate.Designer.cs">
       <DependentUpon>201604170354195_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Data\Art\ArtMigrationConfiguration.cs" />
+    <Compile Include="Migrations\ArtMigrationConfiguration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />

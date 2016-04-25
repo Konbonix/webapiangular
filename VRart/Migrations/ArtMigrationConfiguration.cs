@@ -1,9 +1,10 @@
-using VRart.Data.Art;
 using System;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Collections.Generic;
+using VRart.Models;
+using VRart.Dal;
 
 namespace VRart.Migrations
 {

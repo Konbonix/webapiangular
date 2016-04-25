@@ -8,7 +8,8 @@ namespace VRart.App_Start
 
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
-    using Data.Art;
+    using Dal;
+    using VRart.Models;
 
     using Ninject;
     using Ninject.Web.Common;

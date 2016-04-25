@@ -4,8 +4,9 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VRart.Models;
 
-namespace VRart.Data.Art
+namespace VRart.Dal
 {
     public class ArtContext : DbContext
     {

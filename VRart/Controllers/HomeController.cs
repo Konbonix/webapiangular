@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using VRart.Data.Art;
+using VRart.Dal;
 
 namespace VRart.Controllers
 {
