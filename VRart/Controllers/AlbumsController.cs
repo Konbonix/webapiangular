@@ -23,10 +23,24 @@ namespace VRart.Controllers
         {
             _repo = repo;
         }
-        
+
+        // api/albums
         public IEnumerable<Album> Get()
         {
-            return _repo.GetAlbums(); 
+            return _repo.GetAlbums();
+        }
+
+        //api/albums/id
+        public HttpResponseMessage Get(int id)
+        {
+            IQueryable<Album> results;
+            //TODO: bool include uploads and different method
+            results = _repo.GetAlbums();
+
+            var album = results.Where(a => a.Id == id).FirstOrDefault();
+            if (album != null) return Request.CreateResponse(HttpStatusCode.OK, album);
+
+            return Request.CreateResponse(HttpStatusCode.NotFound);
         }
 
         public HttpResponseMessage Post([FromBody]Album newAlbum)
@@ -45,6 +59,7 @@ namespace VRart.Controllers
             return Request.CreateResponse(HttpStatusCode.BadRequest);
 
         }
+
         /* Web API default EF 
          
         private ArtContext db = new ArtContext();

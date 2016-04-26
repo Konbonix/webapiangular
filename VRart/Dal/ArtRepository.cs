@@ -17,9 +17,16 @@ namespace VRart.Dal
 
         public bool AddAlbum(Album newAlbum)
         {
-            //TODO log this
-            _ctx.Albums.Add(newAlbum);
-            return true;
+            try
+            {
+                _ctx.Albums.Add(newAlbum);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                //TODO log this
+                return false;
+            }
         }
 
         public IQueryable<Album> GetAlbums()

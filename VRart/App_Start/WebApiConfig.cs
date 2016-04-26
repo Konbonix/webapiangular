@@ -26,7 +26,15 @@ namespace VRart
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 
             // Web API routes
-            config.MapHttpAttributeRoutes();
+            //  config.MapHttpAttributeRoutes();
+
+
+            config.Routes.MapHttpRoute(
+                name: "RepliesRoute",
+                routeTemplate: "api/albums/{albumid}/uploads/{id}",
+                defaults: new { controller = "uploads", id = RouteParameter.Optional }
+            );
+
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
