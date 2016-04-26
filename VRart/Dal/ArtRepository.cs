@@ -35,9 +35,23 @@ namespace VRart.Dal
             //throw new NotImplementedException();
         }
 
-        public IQueryable<Upload> GetUploadsByAlbums(int albumID)
+        public bool AddUpload(Upload newUpload)
         {
-            return _ctx.Uploads.Where(u => u.AlbumID == albumID);
+            try
+            {
+                _ctx.Uploads.Add(newUpload);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                //TODO log this
+                return false;
+            }
+        }
+
+        public IQueryable<Upload> GetUploadsByAlbumId(int albumId)
+        {
+            return _ctx.Uploads.Where(u => u.AlbumId == albumId);
         }
 
         public bool Save()
@@ -51,6 +65,11 @@ namespace VRart.Dal
                 //TODO log this 
                 return false;
             }
+        }
+
+        public IQueryable<Upload> GetUploads()
+        {
+            return _ctx.Uploads;
         }
     }
 }

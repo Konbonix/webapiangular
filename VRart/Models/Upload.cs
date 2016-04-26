@@ -11,6 +11,6 @@ namespace VRart.Models
         public string Title { get; set; }
         public DateTime Created { get; set; }
 
-        public int AlbumID { get; set; }
+        public int AlbumId { get; set; }
     }
 }
