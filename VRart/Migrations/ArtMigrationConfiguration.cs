@@ -14,6 +14,7 @@ namespace VRart.Migrations
     {
         public ArtMigrationConfiguration()
         {
+            AutomaticMigrationsEnabled = false;
 #if DEBUG
             AutomaticMigrationsEnabled = true;
             AutomaticMigrationDataLossAllowed = true;
