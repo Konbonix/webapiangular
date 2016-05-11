@@ -232,6 +232,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UploadsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Extensions\HttpContentExtensions.cs" />
     <Compile Include="Migrations\201604260315492_fix-albumID-conventions.cs" />
     <Compile Include="Migrations\201604260315492_fix-albumID-conventions.Designer.cs">
       <DependentUpon>201604260315492_fix-albumID-conventions.cs</DependentUpon>
@@ -1112,6 +1113,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\version.json" />
+    <Content Include="Views\Home\Index-file-upload-temp.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

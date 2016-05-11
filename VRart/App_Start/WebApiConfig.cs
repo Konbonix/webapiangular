@@ -29,11 +29,11 @@ namespace VRart
             //  config.MapHttpAttributeRoutes();
 
 
-            config.Routes.MapHttpRoute(
-                name: "RepliesRoute",
-                routeTemplate: "api/albums/{albumid}/uploads/{id}",
-                defaults: new { controller = "uploads", id = RouteParameter.Optional }
-            );
+            //config.Routes.MapHttpRoute(
+            //    name: "RepliesRoute",
+            //    routeTemplate: "api/albums/{albumid}/uploads/{id}",
+            //    defaults: new { controller = "uploads", id = RouteParameter.Optional }
+            //);
 
 
             config.Routes.MapHttpRoute(

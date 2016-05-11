@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html data-ng-app="uploadDemo">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -37,6 +37,36 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular-file-upload.min.js"></script>
+
+    <script src="~/js/app-albums.js"></script>
+    <script src="~/js/albumsController.js"></script>
+
+    <script type="text/javascript">
+        angular.module('uploadDemo', ['angularFileUpload'])
+            .controller('uploadCtrl', ['$scope', '$upload', function ($scope, $upload) {
+
+                $scope.upload = function (file) {
+                    if (file) {
+                        $upload.upload({
+                            url: 'api/uploads',
+                            fields: { 'username': $scope.username },
+                            file: file
+                        }).success(function (data, status, headers, config) {
+                            console.log(config);
+                            alert("Thanks for the upload!\r\nFilename: " + config.file[0].name + "\r\nResponse: " + data);
+                        }).error(function(error) {
+                            alert("Ooops, something went wrong!");
+                            console.log("Error!", error);
+                        });
+                    }
+                };
+
+            }])
+    </script>
+
 
 </body>
 </html>

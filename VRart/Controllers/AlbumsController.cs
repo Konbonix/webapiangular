@@ -34,7 +34,7 @@ namespace VRart.Controllers
         public HttpResponseMessage Get(int id)
         {
             //TODO: bool include uploads and different method
-            var album = _repo.GetAlbums(id);
+            var album = _repo.GetAlbum(id);
             if (album != null) return Request.CreateResponse(HttpStatusCode.OK, album);
 
             return Request.CreateResponse(HttpStatusCode.NotFound);

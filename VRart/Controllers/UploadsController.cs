@@ -11,6 +11,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using VRart.Dal;
 using VRart.Models;
+using VRart.Extensions;
 
 namespace VRart.Controllers
 {
@@ -23,30 +24,70 @@ namespace VRart.Controllers
             _repo = repo;
         }
 
-        public IEnumerable<Upload> Get(int albumid)
+        public HttpResponseMessage Get()
         {
-            return _repo.GetUploadsByAlbumId(albumid);
+            var uploads = _repo.GetUploads();
+            if (uploads != null) return Request.CreateResponse(HttpStatusCode.OK, uploads);
+
+            return Request.CreateResponse(HttpStatusCode.NotFound);
         }
 
+        public HttpResponseMessage Get(int id)
+        {
+            var uploads = _repo.GetUploads();
+            if (uploads != null) return Request.CreateResponse(HttpStatusCode.OK, uploads);
+
+            return Request.CreateResponse(HttpStatusCode.NotFound);
+        }
 
         // POST: api/Uploads
-        public HttpResponseMessage Post(int albumId, [FromBody]Upload newUpload)
+        //public HttpResponseMessage Post(int albumId, [FromBody]Upload newUpload)
+        //{
+        //    if (newUpload.Created == default(DateTime))
+        //    {
+        //        newUpload.Created = DateTime.UtcNow;
+        //    }
+        //    newUpload.AlbumId = albumId;
+
+        //    if (_repo.AddUpload(newUpload) && _repo.Save())
+        //    {
+        //        //return 200 
+        //        return Request.CreateResponse(HttpStatusCode.Created, newUpload);
+        //    }
+
+        //    //return 500 failure
+        //    return Request.CreateResponse(HttpStatusCode.BadRequest);
+
+        //}
+        //TODO - Change angular package to ng-file-upload https://github.com/danialfarid/ng-file-upload, Validation, Save&Bind, 
+        [HttpPost]
+        [Route("uploads")]
+        public async Task<HttpResponseMessage> UploadFile(HttpRequestMessage request)
         {
-            if (newUpload.Created == default(DateTime))
+            if (!request.Content.IsMimeMultipartContent())
             {
-                newUpload.Created = DateTime.UtcNow;
-            }
-            newUpload.AlbumId = albumId;
-
-            if (_repo.AddUpload(newUpload) && _repo.Save())
-            {
-                //return 200 
-                return Request.CreateResponse(HttpStatusCode.Created, newUpload);
+                throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
             }
 
-            //return 500 failure
-            return Request.CreateResponse(HttpStatusCode.BadRequest);
+            var data = await Request.Content.ParseMultipartAsync();
 
+            if (data.Files.ContainsKey("file"))
+            {
+                var file = data.Files["file"].File;
+                var fileName = data.Files["file"].Filename;
+            }
+
+            if (data.Fields.ContainsKey("description"))
+            {
+                var description = data.Fields["description"].Value;
+            }
+
+            return new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent("Thank you for uploading the file...")
+            };
         }
+
+
     }
 }

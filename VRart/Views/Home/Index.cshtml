@@ -1,10 +1,5 @@
-﻿@section Scripts{
-<script src="~/Scripts/angular.min.js"></script>
-    <script src="~/js/app-albums.js"></script>
-    <script src="~/js/albumsController.js"></script>
-
-}
-<div class="row" ng-app="app-albums">
+﻿
+@*<div class="row" ng-app="app-albums">
     <div class="jumbotron">
         <h1>ASP.NET</h1>
         <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
@@ -18,4 +13,23 @@
 
         </div>
     </div>
-</div>
+</div>*@
+<div data-ng-controller="uploadCtrl">
+<form name="uploadForm">
+    <fieldset>
+        <legend>Upload file</legend>
+        <div>
+            <label>Username:</label>
+            <input type="text" name="userName" ng-model="username" size="48" required="">
+        </div>
+        <div>
+            <label>File:</label>
+            <input type="file" ng-file-select="" ng-model="file" name="file" accept="image/*">
+        </div>
+
+        <button ng-click="upload(file)">Submit</button>
+    </fieldset>
+    <br>
+</form>
+
+    </div>
