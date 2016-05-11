@@ -35,6 +35,17 @@ namespace VRart.Dal
             //throw new NotImplementedException();
         }
 
+        public Album GetAlbum(int id)
+        {
+            return _ctx.Albums.Where(a => a.Id == id).First();
+        }
+
+        public Album GetAlbumWithUploads(int id)
+        {
+            return _ctx.Albums.Include("Uploads").Where(a => a.Id == id).First();
+        }
+
+
         public bool AddUpload(Upload newUpload)
         {
             try
@@ -71,5 +82,6 @@ namespace VRart.Dal
         {
             return _ctx.Uploads;
         }
+
     }
 }

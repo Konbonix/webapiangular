@@ -33,11 +33,8 @@ namespace VRart.Controllers
         //api/albums/id
         public HttpResponseMessage Get(int id)
         {
-            IQueryable<Album> results;
             //TODO: bool include uploads and different method
-            results = _repo.GetAlbums();
-
-            var album = results.Where(a => a.Id == id).FirstOrDefault();
+            var album = _repo.GetAlbums(id);
             if (album != null) return Request.CreateResponse(HttpStatusCode.OK, album);
 
             return Request.CreateResponse(HttpStatusCode.NotFound);
