@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VRart.Models;
+using VRart.Extensions;
+using System.IO;
+using VRart.Services;
 
 namespace VRart.Dal
 {
@@ -58,6 +61,31 @@ namespace VRart.Dal
                 //TODO log this
                 return false;
             }
+        }
+
+        public bool AddUpload(byte[] httpPostedFile)
+        {
+            string savePath = "c:\\Temp\\Uploads\\"; //TODO - expose as config. 
+            string fileName = UploadServices.GetRandomFileName();
+            string path = savePath + fileName;
+            
+            //TODO - Save in context
+            try
+            {
+                File.WriteAllBytes(path, httpPostedFile);
+            }
+            catch (Exception e)
+            {
+                //todo log this
+                throw;
+            }           
+
+            return true;
+        }
+
+        public bool AddUpload(HttpPostedField httpPostedField, HttpPostedFile httpPostedFile, int AlbumId)
+        {
+            return true;
         }
 
         public IQueryable<Upload> GetUploadsByAlbumId(int albumId)

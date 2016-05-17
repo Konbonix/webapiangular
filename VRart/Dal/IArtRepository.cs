@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VRart.Models;
-
+using VRart.Extensions;
 namespace VRart.Dal
 {
     public interface IArtRepository
@@ -21,5 +21,8 @@ namespace VRart.Dal
         bool Save();
         bool AddAlbum(Album newAlbum);
         bool AddUpload(Upload newUpload);
+        bool AddUpload(byte[] httpPostedFile);
+        bool AddUpload(HttpPostedField httpPostedField, HttpPostedFile httpPostedFile, int AlbumId);
+
     }
 }
