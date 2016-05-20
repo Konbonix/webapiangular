@@ -40,12 +40,12 @@ namespace VRart.Dal
 
         public Album GetAlbum(int id)
         {
-            return _ctx.Albums.Where(a => a.Id == id).First();
+            return _ctx.Albums.Where(a => a.AlbumId == id).First();
         }
 
         public Album GetAlbumWithUploads(int id)
         {
-            return _ctx.Albums.Include("Uploads").Where(a => a.Id == id).First();
+            return _ctx.Albums.Include("Uploads").Where(a => a.AlbumId == id).First();
         }
 
 
@@ -82,6 +82,19 @@ namespace VRart.Dal
             }           
 
             return true;
+        }
+
+        public void AddNewTiltAlbum(Upload newTiltUpload)
+        {
+            var newAlbum = new Album();
+            _ctx.Albums.Add(newAlbum);
+            Save();
+
+            int newAlbumId = newAlbum.AlbumId;
+           
+            newTiltUpload.AlbumId = newAlbumId;
+            _ctx.Uploads.Add(newTiltUpload);
+
         }
 
         public bool AddUpload(HttpPostedField httpPostedField, HttpPostedFile httpPostedFile, int AlbumId)

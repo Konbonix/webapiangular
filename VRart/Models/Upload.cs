@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using VRart.Services;
 
 namespace VRart.Models
 {
@@ -12,9 +13,10 @@ namespace VRart.Models
         public Upload()
         {
             Created = DateTime.UtcNow;
+            FileName = UploadServices.GetRandomFileName();
         }
 
-        public int Id { get; set; }
+        public int UploadId { get; set; }
 
         [Required]
         public string Title { get; set; }
@@ -23,6 +25,7 @@ namespace VRart.Models
 
         public DateTime Created { get; set; }
 
+        //FK to Album
         public int AlbumId { get; set; }
     }
 }

@@ -12,6 +12,7 @@ namespace VRart.Services
 
         public static string GetRandomFileName()
         {
+            //TODO - check for collision
             var chars = "abcdefghijklmnopqrstuvwxyz0123456789";
             var fileName = new char[7];
             var random = new Random();
@@ -24,6 +25,22 @@ namespace VRart.Services
             var finalFileName = new String(fileName);
             finalFileName += ".tilt"; //TODO - add fileExtension as property
 
+            return finalFileName;
+        }
+
+        public static string GetRandomAlbumUrl()
+        {
+            //TODO - check for collision
+            var chars = "abcdefghijklmnopqrstuvwxyz0123456789";
+            var fileName = new char[7];
+            var random = new Random();
+
+            for (int i = 0; i < fileName.Length; i++)
+            {
+                fileName[i] = chars[random.Next(chars.Length)];
+            }
+
+            var finalFileName = new String(fileName);
             return finalFileName;
         }
 
@@ -47,6 +64,7 @@ namespace VRart.Services
             {
                 if (entry.FullName.Equals("thumbnail.png", StringComparison.OrdinalIgnoreCase))
                 {
+                    //TODO - exception for file already exists
                     entry.ExtractToFile(Path.Combine(savePath, fileName));
                 }
             }

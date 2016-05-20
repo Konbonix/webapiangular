@@ -53,6 +53,7 @@ namespace VRart.Controllers
 
             var data = await Request.Content.ParseMultipartAsync();
 
+
              if (data.Files.ContainsKey("file"))
             {
                 byte[] file = data.Files["file"].File;

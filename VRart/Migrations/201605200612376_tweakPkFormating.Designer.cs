@@ -7,18 +7,18 @@ namespace VRart.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class fixalbumIDconventions : IMigrationMetadata
+    public sealed partial class tweakPkFormating : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(fixalbumIDconventions));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(tweakPkFormating));
         
         string IMigrationMetadata.Id
         {
-            get { return "201604260315492_fix-albumID-conventions"; }
+            get { return "201605200612376_tweakPkFormating"; }
         }
         
         string IMigrationMetadata.Source
         {
-            get { return Resources.GetString("Source"); }
+            get { return null; }
         }
         
         string IMigrationMetadata.Target

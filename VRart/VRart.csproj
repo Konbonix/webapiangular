@@ -235,13 +235,9 @@
     <Compile Include="Controllers\UploadsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Extensions\HttpContentExtensions.cs" />
-    <Compile Include="Migrations\201604260315492_fix-albumID-conventions.cs" />
-    <Compile Include="Migrations\201604260315492_fix-albumID-conventions.Designer.cs">
-      <DependentUpon>201604260315492_fix-albumID-conventions.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201605170107403_updatedUpload.cs" />
-    <Compile Include="Migrations\201605170107403_updatedUpload.Designer.cs">
-      <DependentUpon>201605170107403_updatedUpload.cs</DependentUpon>
+    <Compile Include="Migrations\201605200612376_tweakPkFormating.cs" />
+    <Compile Include="Migrations\201605200612376_tweakPkFormating.Designer.cs">
+      <DependentUpon>201605200612376_tweakPkFormating.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Album.cs" />
     <Compile Include="Dal\ArtContext.cs" />
@@ -250,10 +246,6 @@
     <Compile Include="Models\Upload.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604170354195_InitialCreate.cs" />
-    <Compile Include="Migrations\201604170354195_InitialCreate.Designer.cs">
-      <DependentUpon>201604170354195_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\ArtMigrationConfiguration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -1140,14 +1132,8 @@
     <Content Include="Scripts\jquery-2.2.3.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201604170354195_InitialCreate.resx">
-      <DependentUpon>201604170354195_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604260315492_fix-albumID-conventions.resx">
-      <DependentUpon>201604260315492_fix-albumID-conventions.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605170107403_updatedUpload.resx">
-      <DependentUpon>201605170107403_updatedUpload.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201605200612376_tweakPkFormating.resx">
+      <DependentUpon>201605200612376_tweakPkFormating.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
