@@ -63,6 +63,7 @@ namespace VRart.Dal
             }
         }
 
+        //TODO - Move this code to service or BLL layer?
         public bool AddUpload(byte[] httpPostedFile)
         {
             string savePath = "c:\\Temp\\Uploads\\"; //TODO - expose as config. 
