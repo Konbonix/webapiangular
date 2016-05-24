@@ -13,16 +13,16 @@ namespace VRart.Models
         public Upload()
         {
             Created = DateTime.UtcNow;
-            FileName = UploadServices.GetRandomFileName();
         }
 
         public int UploadId { get; set; }
 
         [Required]
-        public string Title { get; set; }
         public string FileName { get; set; }
+        //File path should be dropped? Enviornment dependency
+        [Required]
         public string FilePath { get; set;  }
-
+        public string ThumbNail { get; set; }
         public DateTime Created { get; set; }
 
         //FK to Album

@@ -10,7 +10,7 @@ namespace VRart.Models
     {
         public Album()
         {
-            AlbumUrl = UploadServices.GetRandomAlbumUrl();
+            //AlbumUrl = UploadServices.GetRandomAlbumUrl();
             //Uploads = new List<Upload>();
             Created = DateTime.UtcNow;
         }

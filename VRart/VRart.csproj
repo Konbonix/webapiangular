@@ -239,6 +239,14 @@
     <Compile Include="Migrations\201605200612376_tweakPkFormating.Designer.cs">
       <DependentUpon>201605200612376_tweakPkFormating.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605220114577_AddUploadThumbnail.cs" />
+    <Compile Include="Migrations\201605220114577_AddUploadThumbnail.Designer.cs">
+      <DependentUpon>201605220114577_AddUploadThumbnail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605240146070_nothumbnail.cs" />
+    <Compile Include="Migrations\201605240146070_nothumbnail.Designer.cs">
+      <DependentUpon>201605240146070_nothumbnail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Album.cs" />
     <Compile Include="Dal\ArtContext.cs" />
     <Compile Include="Dal\ArtRepository.cs" />
@@ -1134,6 +1142,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201605200612376_tweakPkFormating.resx">
       <DependentUpon>201605200612376_tweakPkFormating.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605220114577_AddUploadThumbnail.resx">
+      <DependentUpon>201605220114577_AddUploadThumbnail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605240146070_nothumbnail.resx">
+      <DependentUpon>201605240146070_nothumbnail.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

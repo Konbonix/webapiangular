@@ -53,18 +53,18 @@ namespace VRart.Controllers
 
             var data = await Request.Content.ParseMultipartAsync();
 
-
-             if (data.Files.ContainsKey("file"))
+            //#TODO - Validate extention is .tilt server side
+            if (data.Files.ContainsKey("file"))
             {
-                byte[] file = data.Files["file"].File;
+                byte[] tiltUpload = data.Files["file"].File;
                 //Create new upload
-                var newUpload = _repo.AddUpload(file);
+                _repo.AddTiltUploadAndAlbum(tiltUpload);
             }
 
-            if (data.Fields.ContainsKey("description"))
-            {
-                var description = data.Fields["description"].Value;
-            }
+            //if (data.Fields.ContainsKey("description"))
+            //{
+            //    var description = data.Fields["description"].Value;
+            //}
 
 
            

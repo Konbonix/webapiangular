@@ -25,56 +25,56 @@ namespace VRart.Migrations
         {
             base.Seed(context);
 #if DEBUG
-            if (context.Albums.Count() == 0)
-            {
-                var album = new Album()
-                {
-                    Title = "Tilt brush city",
-                    Description = "check out this cool small city",
-                    Created = DateTime.Now,
-                    Uploads = new List<Upload>() {
-                            new Upload()
-                            {
-                                Title = "Small City Gif",
-                                Created = DateTime.Now,
-                            }
-                        }
-                };
-                context.Albums.Add(album);
+            //if (context.Albums.Count() == 0)
+            //{
+            //    var album = new Album()
+            //    {
+            //        Title = "Tilt brush city",
+            //        Description = "check out this cool small city",
+            //        Created = DateTime.Now,
+            //        Uploads = new List<Upload>() {
+            //                new Upload()
+            //                {
+            //                    Title = "Small City Gif",
+            //                    Created = DateTime.Now,
+            //                }
+            //            }
+            //    };
+            //    context.Albums.Add(album);
 
-                var anotherAlbum = new Album()
-                {
-                    Title = "Testing",
-                    Description = "My Description",
-                    Created = DateTime.Now
-                };
-                context.Albums.Add(anotherAlbum);
+            //    var anotherAlbum = new Album()
+            //    {
+            //        Title = "Testing",
+            //        Description = "My Description",
+            //        Created = DateTime.Now
+            //    };
+            //    context.Albums.Add(anotherAlbum);
 
-                var thridAlbum = new Album()
-                {
-                    Title = "Line Art",
-                    Description = "Created this line artwork",
-                    Created = DateTime.Now,
-                    Uploads = new List<Upload>() {
-                            new Upload()
-                            {
-                                Title = "Line Art Gif",
-                                Created = DateTime.Now,
-                            }
-                        }
-                };
-                context.Albums.Add(thridAlbum);
+            //    var thridAlbum = new Album()
+            //    {
+            //        Title = "Line Art",
+            //        Description = "Created this line artwork",
+            //        Created = DateTime.Now,
+            //        Uploads = new List<Upload>() {
+            //                new Upload()
+            //                {
+            //                    Title = "Line Art Gif",
+            //                    Created = DateTime.Now,
+            //                }
+            //            }
+            //    };
+            //    context.Albums.Add(thridAlbum);
 
-                try
-                {
-                    context.SaveChanges();
-                }
-                catch (Exception ex)
-                {
-                    var msg = ex.Message;
-                }
+            //    try
+            //    {
+            //        context.SaveChanges();
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        var msg = ex.Message;
+            //    }
 
-            }
+            //}
 
 #endif
         }

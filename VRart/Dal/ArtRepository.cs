@@ -49,58 +49,78 @@ namespace VRart.Dal
         }
 
 
-        public bool AddUpload(Upload newUpload)
+        public void AddUpload(Upload newUpload)
         {
             try
             {
                 _ctx.Uploads.Add(newUpload);
-                return true;
             }
             catch (Exception ex)
             {
                 //TODO log this
-                return false;
             }
         }
 
-        //TODO - Move this code to service or BLL layer?
-        public bool AddUpload(byte[] httpPostedFile)
-        {
-            string savePath = "c:\\Temp\\Uploads\\"; //TODO - expose as config. 
-            string fileName = UploadServices.GetRandomFileName();
-            string path = savePath + fileName;
+        ////TODO - Move this code to service or BLL layer?
+        //public Upload AddUpload(byte[] httpPostedFile)
+        //{
+        //    string savePath = "c:\\Temp\\Uploads\\"; //TODO - expose as config. 
+        //    string fileName = UploadServices.GetRandomFileName();
+        //    string path = savePath + fileName;
             
-            //TODO - Save in context
-            try
-            {
-                File.WriteAllBytes(path, httpPostedFile);
-            }
-            catch (Exception e)
-            {
-                //todo log this
-                throw;
-            }           
+        //    //TODO - Save in context
+        //    try
+        //    {
+        //        File.WriteAllBytes(path, httpPostedFile);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        //todo log this
+        //        throw;
+        //    }           
 
-            return true;
-        }
+        //}
 
-        public void AddNewTiltAlbum(Upload newTiltUpload)
+        public void AddTiltUploadAndAlbum(byte[] httpPostedFile)
         {
+            string filePath = @"C:\Temp\Uploads\"; //TODO - expose as config
+
+            //Create New Album For the File
             var newAlbum = new Album();
+            newAlbum.AlbumUrl = UploadServices.GetRandomFileName();
             _ctx.Albums.Add(newAlbum);
             Save();
 
-            int newAlbumId = newAlbum.AlbumId;
+            //Create new tile file upload
+            var newUpload = new Upload();
+            newUpload.FileName = newAlbum.AlbumUrl + ".tilt";
+            newUpload.FilePath = filePath;
+            newUpload.AlbumId = newAlbum.AlbumId;
            
-            newTiltUpload.AlbumId = newAlbumId;
-            _ctx.Uploads.Add(newTiltUpload);
+            //Write file to disk TODO - move this into service?
+            try
+            {
+                //Save in context
+                _ctx.Uploads.Add(newUpload);
+                Save();
+                //Write to disk
+                File.WriteAllBytes(newUpload.FilePath + newUpload.FileName , httpPostedFile);
 
+                //Create the thumbnail 
+                UploadServices.ExtractThumbNail(httpPostedFile, filePath, newAlbum.AlbumUrl + ".png");
+            }
+            catch
+            {
+                throw;
+            }
+
+           
         }
 
-        public bool AddUpload(HttpPostedField httpPostedField, HttpPostedFile httpPostedFile, int AlbumId)
-        {
-            return true;
-        }
+        //public bool AddUpload(HttpPostedField httpPostedField, HttpPostedFile httpPostedFile, int AlbumId)
+        //{
+        //    return true;
+        //}
 
         public IQueryable<Upload> GetUploadsByAlbumId(int albumId)
         {

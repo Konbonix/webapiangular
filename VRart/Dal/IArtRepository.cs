@@ -20,10 +20,10 @@ namespace VRart.Dal
 
         bool Save();
         bool AddAlbum(Album newAlbum);
-        bool AddUpload(Upload newUpload);
-        bool AddUpload(byte[] httpPostedFile);
-        bool AddUpload(HttpPostedField httpPostedField, HttpPostedFile httpPostedFile, int AlbumId);
+        //void AddUpload(Upload newUpload);
+        //void AddUpload(byte[] httpPostedFile);
+        //bool AddUpload(HttpPostedField httpPostedField, HttpPostedFile httpPostedFile, int AlbumId);
 
-        void AddNewTiltAlbum(Upload newTiltUpload);
+        void AddTiltUploadAndAlbum(byte[] httpPostedFile);
     }
 }

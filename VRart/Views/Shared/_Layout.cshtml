@@ -51,7 +51,7 @@
             $scope.uploadPic = function (file) {
                 file.upload = Upload.upload({
                     url: 'api/uploads/',
-                    data: { username: $scope.username, file: file },
+                    data: { file: file },
                 });
 
                 file.upload.then(function (response) {

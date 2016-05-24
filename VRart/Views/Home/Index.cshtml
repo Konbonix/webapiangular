@@ -45,18 +45,15 @@
 <form name="myForm">
     <fieldset>
         <legend>Upload on form submit</legend>
-        Username:
-        <input type="text" name="userName" ng-model="username" size="31" required>
-        <i ng-show="myForm.userName.$error.required">*required</i>
         <br>Photo:
-        <input type="file" ngf-select ng-model="picFile" ngf-pattern="'.tilt'" name="file" ngf-max-size="2MB" required ngf-model-invalid="errorFile">
+        <input type="file" ngf-select ng-model="picFile" ngf-pattern="'.tilt'" name="file" ngf-max-size="10MB" required ngf-model-invalid="errorFile">
         <i ng-show="myForm.file.$error.required">*required</i><br>
         <i ng-show="myForm.file.$error.maxSize">
             File too large
-            {{errorFile.size / 1000000|number:1}}MB: max 2M
+            {{errorFile.size / 1000000|number:1}}MB: max 10M
         </i>
         <i ng-show="myForm.file.$error.pattern">
-        Needs to be a .tilt file
+        Please upload .tilt file
         </i>
 
             <button ng-disabled="!myForm.$valid"

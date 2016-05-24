@@ -21,8 +21,8 @@ namespace VRart
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
 #if DEBUG
-            byte[] empty = new byte[0];
-            UploadServices.ExtractThumbNail(empty, @"C:\Temp\Uploads\", "1234567.png");
+            //byte[] empty = new byte[0];
+            //UploadServices.ExtractThumbNail(empty, @"C:\Temp\Uploads\", "1234567.png");
 #endif
 
         }    
