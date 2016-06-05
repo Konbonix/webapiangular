@@ -3,7 +3,7 @@
     "use strict";
 
     //get the angular module
-    angular.module("app-albums")
+    angular.module("app-vr")
         .controller("albumsController", albumsController);
 
     function albumsController($http) {

@@ -6,8 +6,23 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
+    <style>
+    .drop-box {
+        background: #F8F8F8;
+        border: 5px dashed #DDD;
+        width: 200px;
+        height: 65px;
+        text-align: center;
+        padding-top: 25px;
+        margin: 10px;
+    }
+    .dragover {
+        border: 5px dashed blue;
+    }
+    </style>
 </head>
-<body ng-app="fileUpload" ng-controller="MyCtrl">
+<body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -39,36 +54,17 @@
     @RenderSection("scripts", required: false)
 
     <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular-route.min.js"></script>
     <script src="~/Scripts/ng-file-upload-all.min.js"></script>
 
-    <script src="~/js/app-albums.js"></script>
-    <script src="~/js/albumsController.js"></script>
+    <script src="~/angular/app-vr.js"></script>
+    <script src="~/angular/uploads/uploadsController.js"></script>
+    @*<script src="~/angular/albums/albumsController.js"></script>*@
 
-    <script type="text/javascript">
-        var app = angular.module('fileUpload', ['ngFileUpload']);
 
-        app.controller('MyCtrl', ['$scope', 'Upload', '$timeout', function ($scope, Upload, $timeout) {
-            $scope.uploadPic = function (file) {
-                file.upload = Upload.upload({
-                    url: 'api/uploads/',
-                    data: { file: file },
-                });
+    <script>
 
-                file.upload.then(function (response) {
-                    $timeout(function () {
-                        file.result = response.data;
-                    });
-                }, function (response) {
-                    if (response.status > 0)
-                        $scope.errorMsg = response.status + ': ' + response.data;
-                }, function (evt) {
-                    // Math.min is to fix IE which reports 200% sometimes
-                    file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
-                });
-            }
-        }]);
     </script>
-
 
 </body>
 </html>

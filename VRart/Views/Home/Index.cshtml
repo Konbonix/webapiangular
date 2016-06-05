@@ -1,71 +1,24 @@
-﻿
-@*<div class="row" ng-app="app-albums">
-    <div class="jumbotron">
-        <h1>ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-        <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+﻿<h1>Angular View</h1>
+<div class="row" ng-app="app-vr">
+    <div ng-view></div>
+</div>
+    <!--
+    <div ng-app="app-vr" ng-controller="uploadsController">
+
+        <div class="button" ngf-select="upload($files)" ngf-multiple="true">Select File</div>
+        Drop File:
+        <div ngf-drop ngf-select ng-model="files" class="drop-box"
+                ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
+                ngf-pattern="'.tilt'" ngf-max-size="10MB" required ngf-model-invalid="errorFile">Drop .tilt file here or click to upload</div>
+        <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
+        Files:
+        <ul>
+            <li ng-repeat="f in files" style="font:smaller">{{f.name}} {{f.$error}} {{f.$errorParam}}</li>
+        </ul>
+        Upload Log:
+        <pre>{{log}}</pre>
+
+
     </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div ng-controller="albumsController as vm">
-                    {{ vm.name }}
-            </div>
-
-        </div>
-    </div>
-</div>*@
- @*<form name="myForm">
-    <fieldset>
-      <legend>Upload on form submit</legend>
-      Username:
-      <input type="text" name="userName" ng-model="username" size="31" required>
-      <i ng-show="myForm.userName.$error.required">*required</i>
-      <br>Photo:
-      <input type="file" ngf-select ng-model="picFile" name="file"    
-             accept="image/*" ngf-max-size="2MB" required
-             ngf-model-invalid="errorFile">
-      <i ng-show="myForm.file.$error.required">*required</i><br>
-      <i ng-show="myForm.file.$error.maxSize">File too large 
-          {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
-      <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile" class="thumb"> <button ng-click="picFile = null" ng-show="picFile">Remove</button>
-      <br>
-      <button ng-disabled="!myForm.$valid" 
-              ng-click="uploadPic(picFile)">Submit</button>
-      <span class="progress" ng-show="picFile.progress >= 0">
-        <div style="width:{{picFile.progress}}%" 
-            ng-bind="picFile.progress + '%'"></div>
-      </span>
-      <span ng-show="picFile.result">Upload Successful</span>
-      <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
-    </fieldset>
-    <br>
-  </form>*@
-
-
-<form name="myForm">
-    <fieldset>
-        <legend>Upload on form submit</legend>
-        <br>Photo:
-        <input type="file" ngf-select ng-model="picFile" ngf-pattern="'.tilt'" name="file" ngf-max-size="10MB" required ngf-model-invalid="errorFile">
-        <i ng-show="myForm.file.$error.required">*required</i><br>
-        <i ng-show="myForm.file.$error.maxSize">
-            File too large
-            {{errorFile.size / 1000000|number:1}}MB: max 10M
-        </i>
-        <i ng-show="myForm.file.$error.pattern">
-        Please upload .tilt file
-        </i>
-
-            <button ng-disabled="!myForm.$valid"
-                    ng-click="uploadPic(picFile)">
-                Submit
-            </button>
-            <span class="progress" ng-show="picFile.progress >= 0">
-                <div style="width:{{picFile.progress}}%"
-                     ng-bind="picFile.progress + '%'"></div>
-            </span>
-            <span ng-show="picFile.result">Upload Successful</span>
-            <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
-</fieldset>
-    <br>
-</form>
+        -->
+    <!-- TODO: Error Messages for max file size or incorrect -->

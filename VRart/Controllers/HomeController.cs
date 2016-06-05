@@ -19,8 +19,8 @@ namespace VRart.Controllers
         {
             ViewBag.Title = "Home Page";
 
-            var albums = _repo.GetAlbums().OrderByDescending(a => a.Created).Take(25).ToList();
-            return View(albums);  
+            //var albums = _repo.GetAlbums().OrderByDescending(a => a.Created).Take(25).ToList();
+            return View();  
         }
     }
 }

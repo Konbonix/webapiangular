@@ -7,6 +7,7 @@ using VRart.Models;
 using VRart.Extensions;
 using System.IO;
 using VRart.Services;
+using System.Web.Http;
 
 namespace VRart.Dal
 {
@@ -111,7 +112,7 @@ namespace VRart.Dal
             }
             catch
             {
-                throw;
+                throw new HttpResponseException(System.Net.HttpStatusCode.BadRequest);
             }
 
            

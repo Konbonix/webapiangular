@@ -1,0 +1,18 @@
+﻿<!-- Unused right now-->
+
+
+    <div class="button" ngf-select="upload($files)" ngf-multiple="true">Select File</div>
+    Drop File:
+    <div ngf-drop ngf-select ng-model="files" class="drop-box"
+         ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
+         ngf-pattern="'.tilt'" ngf-max-size="10MB" required ngf-model-invalid="errorFile">Drop .tilt file here or click to upload</div>
+    <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
+    Files:
+    <ul>
+        <li ng-repeat="f in files" style="font:smaller">{{f.name}} {{f.$error}} {{f.$errorParam}}</li>
+    </ul>
+    Upload Log:
+    <pre>{{log}}</pre>
+
+    <!-- TODO: Error Messages for max file size or incorrect -->
+
