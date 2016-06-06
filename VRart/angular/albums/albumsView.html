@@ -1,3 +1,4 @@
-﻿<div>
-    Albums
+﻿<div ng-repeat="album in vm.albumsOverview">
+    <a href="{{album.downloadPath}}"><img src="{{album.thumbnailPath}}" alt=""> <br>{{album.albumUrl}}</a>
 </div>
+

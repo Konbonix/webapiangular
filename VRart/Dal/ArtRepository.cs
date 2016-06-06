@@ -8,6 +8,7 @@ using VRart.Extensions;
 using System.IO;
 using VRart.Services;
 using System.Web.Http;
+using System.Configuration;
 
 namespace VRart.Dal
 {
@@ -33,11 +34,29 @@ namespace VRart.Dal
             }
         }
 
+
+
         public IQueryable<Album> GetAlbums()
         {
             return _ctx.Albums;
             //throw new NotImplementedException();
         }
+
+        public IQueryable<AlbumOverview> GetAlbumsOverview()
+        {
+            string uploadRootWebPath = ConfigurationManager.AppSettings["UploadRootWebPath"];
+
+            var albumsOverview = from albums in _ctx.Albums
+                                  join uploads in _ctx.Uploads on albums.AlbumId equals uploads.AlbumId //#TODO - add filetype = tilt for when png/gif overviews 
+                                  select new AlbumOverview
+                                  {
+                                      AlbumUrl = albums.AlbumUrl,
+                                      ThumbnailPath = uploadRootWebPath + albums.AlbumUrl + ".png",
+                                      DownloadPath = uploadRootWebPath + uploads.FileName
+                                  };
+            return albumsOverview;
+        }
+
 
         public Album GetAlbum(int id)
         {
@@ -84,7 +103,7 @@ namespace VRart.Dal
 
         public void AddTiltUploadAndAlbum(byte[] httpPostedFile)
         {
-            string filePath = @"C:\Temp\Uploads\"; //TODO - expose as config
+            string uploadRootSavePath = ConfigurationManager.AppSettings["UploadRootSavePath"];
 
             //Create New Album For the File
             var newAlbum = new Album();
@@ -95,7 +114,8 @@ namespace VRart.Dal
             //Create new tile file upload
             var newUpload = new Upload();
             newUpload.FileName = newAlbum.AlbumUrl + ".tilt";
-            newUpload.FilePath = filePath;
+            newUpload.FileType = "tilt";
+            //newUpload.FilePath = filePath;
             newUpload.AlbumId = newAlbum.AlbumId;
            
             //Write file to disk TODO - move this into service?
@@ -105,10 +125,10 @@ namespace VRart.Dal
                 _ctx.Uploads.Add(newUpload);
                 Save();
                 //Write to disk
-                File.WriteAllBytes(newUpload.FilePath + newUpload.FileName , httpPostedFile);
+                File.WriteAllBytes(uploadRootSavePath + newUpload.FileName , httpPostedFile);
 
                 //Create the thumbnail 
-                UploadServices.ExtractThumbNail(httpPostedFile, filePath, newAlbum.AlbumUrl + ".png");
+                UploadServices.ExtractThumbNail(httpPostedFile, uploadRootSavePath, newAlbum.AlbumUrl + ".png");
             }
             catch
             {
@@ -146,5 +166,6 @@ namespace VRart.Dal
             return _ctx.Uploads;
         }
 
+   
     }
 }

@@ -7,11 +7,11 @@
     angular.module("app-vr", ["ngRoute", 'ngFileUpload'])
         .config(function ($routeProvider) {
 
-            $routeProvider.when("/", {
-                templateUrl: "/angular/testview.html"
-            });
 
-            $routeProvider.when("/albums", {
+
+            $routeProvider.when("/", {
+                controller: "albumsController",
+                controllerAs: "vm",
                 templateUrl: "/angular/albums/albumsView.html"
 
             });

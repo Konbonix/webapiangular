@@ -8,7 +8,28 @@
 
     function albumsController($http) {
         var vm = this;
-        vm.name = "Test";
+        vm.albumsOverview = [];
+        vm.errorMessage = "";
+        vm.isBusy = true;
+
+        var url = "/api/albums/";
+
+        //Load all albums from API
+        $http.get(url)
+          .then(function (response) {
+              // success
+              angular.copy(response.data, vm.albumsOverview);
+          }, function (err) {
+              // failure
+              vm.errorMessage = "Failed to load sights";
+          })
+          .finally(function () {
+              vm.isBusy = false;
+          });
+
+
+
+
     }
 
 })();

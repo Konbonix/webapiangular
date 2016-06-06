@@ -10,6 +10,7 @@ namespace VRart.Dal
     public interface IArtRepository
     {
         //IEnumerable for returning static types. IQueryable for adding paging, filtering, etc
+        IQueryable<AlbumOverview> GetAlbumsOverview();
         IQueryable<Album> GetAlbums();
         Album GetAlbum(int id);
         Album GetAlbumWithUploads(int id);

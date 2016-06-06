@@ -25,9 +25,9 @@ namespace VRart.Controllers
         }
 
         // api/albums
-        public IEnumerable<Album> Get()
+        public IEnumerable<AlbumOverview> Get()
         {
-            return _repo.GetAlbums();
+            return _repo.GetAlbumsOverview();
         }
 
         //api/albums/id
