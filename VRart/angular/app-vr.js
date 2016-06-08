@@ -5,8 +5,7 @@
 
     //create module
     angular.module("app-vr", ["ngRoute", 'ngFileUpload'])
-        .config(function ($routeProvider) {
-
+        .config(function ($routeProvider, $locationProvider) {
 
 
             $routeProvider.when("/", {
@@ -20,6 +19,12 @@
                 controller: "uploadsController",
                 controllerAs: "vm",
                 templateUrl: "/angular/uploads/uploadsView.html"
+            });
+
+            $routeProvider.when("/abc", {
+                controller: "albumsController",
+                controllerAs: "vm",
+                templateUrl: "/angular/albums/albumsView.html"
             });
 
         });

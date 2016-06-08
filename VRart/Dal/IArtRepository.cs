@@ -25,6 +25,6 @@ namespace VRart.Dal
         //void AddUpload(byte[] httpPostedFile);
         //bool AddUpload(HttpPostedField httpPostedField, HttpPostedFile httpPostedFile, int AlbumId);
 
-        void AddTiltUploadAndAlbum(byte[] httpPostedFile);
+        string AddTiltUploadAndAlbum(byte[] httpPostedFile);
     }
 }

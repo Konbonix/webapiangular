@@ -101,7 +101,7 @@ namespace VRart.Dal
 
         //}
 
-        public void AddTiltUploadAndAlbum(byte[] httpPostedFile)
+        public string AddTiltUploadAndAlbum(byte[] httpPostedFile)
         {
             string uploadRootSavePath = ConfigurationManager.AppSettings["UploadRootSavePath"];
 
@@ -129,6 +129,8 @@ namespace VRart.Dal
 
                 //Create the thumbnail 
                 UploadServices.ExtractThumbNail(httpPostedFile, uploadRootSavePath, newAlbum.AlbumUrl + ".png");
+
+                return newAlbum.AlbumUrl;
             }
             catch
             {

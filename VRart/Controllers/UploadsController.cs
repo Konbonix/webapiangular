@@ -53,12 +53,13 @@ namespace VRart.Controllers
 
             var data = await Request.Content.ParseMultipartAsync();
 
+            string responseAlbumUrl = "not created";
             //#TODO - Validate extention is .tilt server side
             if (data.Files.ContainsKey("file"))
             {
                 byte[] tiltUpload = data.Files["file"].File;
                 //Create new upload
-                _repo.AddTiltUploadAndAlbum(tiltUpload);
+                responseAlbumUrl = _repo.AddTiltUploadAndAlbum(tiltUpload);
             }
 
             //if (data.Fields.ContainsKey("description"))
@@ -67,11 +68,9 @@ namespace VRart.Controllers
             //}
 
 
-           
-
             return new HttpResponseMessage(HttpStatusCode.OK)
             {
-                Content = new StringContent("Thank you for uploading the file...")
+                Content = new StringContent(responseAlbumUrl)//new StringContent("Thank you for uploading the file...")
             };
         }
 

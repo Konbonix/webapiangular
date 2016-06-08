@@ -271,6 +271,8 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="angular\albums\albumsController.js" />
+    <Content Include="angular\albums\albumsEditController.js" />
     <Content Include="angular\albums\albumsView.html" />
     <Content Include="angular\uploads\uploadsController.js" />
     <Content Include="angular\uploads\uploadsView.html" />
@@ -310,7 +312,6 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="angular\app-vr.js" />
-    <Content Include="angular\albums\albumsController.js" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-aria.js" />
