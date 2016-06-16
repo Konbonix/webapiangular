@@ -11,9 +11,11 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using VRart.Models;
 using VRart.Dal;
+using System.Web.Http.Cors;
 
 namespace VRart.Controllers
 {
+    [EnableCors(origins: "http://localhost:3000", headers: "*", methods: "*")]
     public class AlbumsController : ApiController
     {
 
@@ -31,10 +33,10 @@ namespace VRart.Controllers
         }
 
         //api/albums/id
-        public HttpResponseMessage Get(int id)
+        public HttpResponseMessage Get(string albumUrl)
         {
             //TODO: bool include uploads and different method
-            var album = _repo.GetAlbum(id);
+            var album = _repo.GetAlbum(albumUrl);
             if (album != null) return Request.CreateResponse(HttpStatusCode.OK, album);
 
             return Request.CreateResponse(HttpStatusCode.NotFound);

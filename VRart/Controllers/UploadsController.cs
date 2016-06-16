@@ -13,9 +13,12 @@ using VRart.Dal;
 using VRart.Models;
 using VRart.Extensions;
 using VRart.Services;
+using System.Web.Http.Cors;
 
 namespace VRart.Controllers
 {
+
+    [EnableCors(origins: "http://localhost:3000", headers: "*", methods: "*")]
     public class UploadsController : ApiController
     {
         private IArtRepository _repo;
@@ -59,7 +62,7 @@ namespace VRart.Controllers
             {
                 byte[] tiltUpload = data.Files["file"].File;
                 //Create new upload
-                responseAlbumUrl = _repo.AddTiltUploadAndAlbum(tiltUpload);
+                responseAlbumUrl = _repo.AddTiltUploadAndAlbum(tiltUpload); 
             }
 
             //if (data.Fields.ContainsKey("description"))

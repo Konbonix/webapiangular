@@ -12,7 +12,7 @@ namespace VRart.Dal
         //IEnumerable for returning static types. IQueryable for adding paging, filtering, etc
         IQueryable<AlbumOverview> GetAlbumsOverview();
         IQueryable<Album> GetAlbums();
-        Album GetAlbum(int id);
+        Album GetAlbum(string albumUrl);
         Album GetAlbumWithUploads(int id);
         IQueryable<Upload> GetUploads();
         IQueryable<Upload> GetUploadsByAlbumId(int albumId);

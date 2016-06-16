@@ -58,9 +58,9 @@ namespace VRart.Dal
         }
 
 
-        public Album GetAlbum(int id)
+        public Album GetAlbum(string albumUrl)
         {
-            return _ctx.Albums.Where(a => a.AlbumId == id).First();
+            return _ctx.Albums.Where(a => a.AlbumUrl == albumUrl).First();
         }
 
         public Album GetAlbumWithUploads(int id)

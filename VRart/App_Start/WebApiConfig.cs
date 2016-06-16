@@ -35,6 +35,8 @@ namespace VRart
             //    defaults: new { controller = "uploads", id = RouteParameter.Optional }
             //);
 
+            //Allow cross orgin webapi requests
+            config.EnableCors();
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

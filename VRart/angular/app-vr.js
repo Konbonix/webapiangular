@@ -4,7 +4,7 @@
 
 
     //create module
-    angular.module("app-vr", ["ngRoute", 'ngFileUpload'])
+    angular.module("app-vr", ["ngRoute", 'ngFileUpload', 'ui.router'])
         .config(function ($routeProvider, $locationProvider) {
 
 
@@ -27,6 +27,7 @@
                 templateUrl: "/angular/albums/albumsView.html"
             });
 
+            $locationProvider.html5Mode(true);
         });
 
 })();
