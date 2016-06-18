@@ -46,7 +46,7 @@ namespace VRart.Controllers
 
         // /api/uploads/
         [HttpPost]
-        [Route("uploads")] 
+        //[Route("api/uploads")] 
         public async Task<HttpResponseMessage> UploadFile(HttpRequestMessage request)
         {
             if (!request.Content.IsMimeMultipartContent())

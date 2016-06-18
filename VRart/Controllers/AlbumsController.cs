@@ -27,12 +27,14 @@ namespace VRart.Controllers
         }
 
         // api/albums
+        [Route("api/albums/")]
         public IEnumerable<AlbumOverview> Get()
         {
             return _repo.GetAlbumsOverview();
         }
 
         //api/albums/id
+        [Route("api/albums/{albumUrl}")]
         public HttpResponseMessage Get(string albumUrl)
         {
             //TODO: bool include uploads and different method

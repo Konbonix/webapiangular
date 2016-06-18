@@ -38,6 +38,8 @@ namespace VRart
             //Allow cross orgin webapi requests
             config.EnableCors();
 
+            config.MapHttpAttributeRoutes();
+
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
@@ -46,3 +48,4 @@ namespace VRart
         }
     }
 }
+ 

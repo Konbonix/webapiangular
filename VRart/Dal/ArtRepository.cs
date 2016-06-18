@@ -60,6 +60,7 @@ namespace VRart.Dal
 
         public Album GetAlbum(string albumUrl)
         {
+            //#TODO - exception handling null or bad parameter
             return _ctx.Albums.Where(a => a.AlbumUrl == albumUrl).First();
         }
 
