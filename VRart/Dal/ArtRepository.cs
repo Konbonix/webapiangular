@@ -52,7 +52,9 @@ namespace VRart.Dal
                                   {
                                       AlbumUrl = albums.AlbumUrl,
                                       ThumbnailPath = uploadRootWebPath + albums.AlbumUrl + ".png",
-                                      DownloadPath = uploadRootWebPath + uploads.FileName
+                                      DownloadPath = uploadRootWebPath + uploads.FileName,
+                                      Title = albums.Title, 
+                                      Description = albums.Description
                                   };
             return albumsOverview;
         }

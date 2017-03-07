@@ -10,5 +10,7 @@ namespace VRart.Models
         public string AlbumUrl { get; set; }
         public string ThumbnailPath { get; set; }
         public string DownloadPath { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
     }
 }
